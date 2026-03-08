@@ -68,7 +68,7 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-[4fr_6fr]">
           {/* Left: contact info */}
           <div className="flex flex-col gap-6">
             <h3 className="text-2xl font-bold">Informacion de Contacto</h3>
