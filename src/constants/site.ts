@@ -5,7 +5,7 @@ export const SITE = {
   email: 'creamelamine@gmail.com',
   location: 'Ate-Lima, Peru',
   locationDetail: 'Showroom y Taller',
-  whatsapp: '51994080979',
+  whatsapp: '51989366433',
   hours: {
     weekdays: 'Lun - Vie: 8:00 - 18:00',
     saturday: 'Sab: 9:00 - 13:00',
