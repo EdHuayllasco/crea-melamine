@@ -10,6 +10,7 @@ type Status = 'idle' | 'loading' | 'done' | 'error'
 
 export function SpaceAnalyzer() {
   const [preview, setPreview] = useState<string | null>(null)
+  const [instruction, setInstruction] = useState('')
   const [status, setStatus] = useState<Status>('idle')
   const [result, setResult] = useState<AnalysisResult | null>(null)
   const [error, setError] = useState('')
@@ -35,7 +36,7 @@ export function SpaceAnalyzer() {
       const res = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image: preview }),
+        body: JSON.stringify({ image: preview, instruction }),
       })
       if (!res.ok) {
         const data = await res.json()
@@ -52,6 +53,7 @@ export function SpaceAnalyzer() {
 
   function reset() {
     setPreview(null)
+    setInstruction('')
     setResult(null)
     setError('')
     setStatus('idle')
@@ -107,8 +109,17 @@ export function SpaceAnalyzer() {
               </div>
             )}
 
+            {preview && status !== 'loading' && (
+              <textarea
+                value={instruction}
+                onChange={(e) => setInstruction(e.target.value)}
+                placeholder="Describe que quieres hacer: ej. 'Quiero agregar un closet en la pared del fondo' o 'Necesito remodelar la cocina con muebles altos y bajos'"
+                className="min-h-20 w-full resize-none rounded-xl border border-border bg-input-background px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring/30"
+              />
+            )}
+
             <div className="flex gap-3">
-              {preview && status !== 'loading' && (
+              {preview && status !== 'loading' && instruction.trim() && (
                 <>
                   <button
                     onClick={analyze}
