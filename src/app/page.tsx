@@ -5,6 +5,7 @@ import { Services } from '@/components/sections/Services'
 import { Process } from '@/components/sections/Process'
 import { Gallery } from '@/components/sections/Gallery'
 import { About } from '@/components/sections/About'
+import { SpaceAnalyzer } from '@/components/sections/SpaceAnalyzer'
 import { Contact } from '@/components/sections/Contact'
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <Gallery />
         <Process />
         <About />
+        <SpaceAnalyzer />
         <Contact />
       </main>
       <Footer />
